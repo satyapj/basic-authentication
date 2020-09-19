@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
+import AppFooter from './components/AppFooter';
+import AppHeader from './components/AppHeader';
+import AuthContext from './context/AuthContext';
+
+import { Home, Admin, Login, Signup, NoMatch } from './pages';
+
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthContext.Provider value={{ isAuthenticated: false }}>
+        <AppHeader />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <PrivateRoute path="/admin" component={Admin} />
+            <Route path="*">
+              <NoMatch />
+            </Route>
+          </Switch>
+        </div>
+        <AppFooter />
+      </AuthContext.Provider>
+    </Router>
   );
 }
 
