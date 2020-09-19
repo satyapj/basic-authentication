@@ -5,7 +5,7 @@ function NoMatch() {
   let location = useLocation();
   return (
     <div>
-      <h3>No matching route found for <code>{location.pathname}</code> </h3>      
+      <h3>No matching route found for <code>{location.pathname}</code> </h3>
     </div>
   );
 }
