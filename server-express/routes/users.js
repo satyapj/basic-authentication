@@ -5,6 +5,13 @@ const cors = require('cors');
 
 const { newAccessToken } = require('../middlewares');
 
+const users = [
+  {
+    "name": "John Doe",
+    "uname": "john.doe"
+  }
+]
+
 router.all('*', cors());
 router.get('/', index);
 // router.options('/login', cors()); // allow cors for pre-flight requeest
@@ -13,7 +20,7 @@ router.post('/login', cors(), loginPost);
 module.exports = router;
 
 function index(req, res, next) {
-  res.json('respond with a resource');
+  res.json({data: users});
 }
 
 function loginPost(req, res) {
