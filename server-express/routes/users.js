@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const { newAccessToken } = require('../middlewares');
 
+// temporary placeholder users data
 const users = [
   {
     "name": "John Doe",
