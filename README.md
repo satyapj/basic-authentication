@@ -4,7 +4,7 @@ An example of building client/server application with basic user authentication.
 
 ## Server 
 
-Node + Express + REST API + JWT
+- Node 11 + Express 4.16 + REST API + JWT
 
 ## Client
 
